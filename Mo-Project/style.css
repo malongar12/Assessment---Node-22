@@ -1,5 +1,4 @@
 body{
-    display: flex;
     background-color: beige;
     justify-content: center;
 }
@@ -15,5 +14,16 @@ body{
     border: 5px solid burlywood;
     border-radius: 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+}
+
+#newDIv{
+    display: flex;
+    justify-content: center;
+}
+
+#newli{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
     font-size: larger;
 }
