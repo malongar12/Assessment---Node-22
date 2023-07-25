@@ -1,0 +1,19 @@
+body{
+    display: flex;
+    background-color: beige;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    border: 20px;
+    border-radius: 20px;
+}
+
+#input{
+    padding: 10px;
+    border: 5px solid burlywood;
+    border-radius: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+}
