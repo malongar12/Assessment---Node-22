@@ -1,0 +1,31 @@
+1. console.log(numPlanets) will print out 8
+   console.log(yearNeptuneDiscovered) print out 1846
+
+2. let {numPlanets, ...discoveryYears}  print out planetFacts
+    
+
+Array Destructuring 
+ 
+3. console.log(first); print out  Maya
+console.log(second); print out  Marisa
+console.log(third); print out  Chi
+
+4. console.log(raindrops);  print out "Raindrops on roses"
+console.log(whiskers); print out  "whiskers on kittens"
+console.log(aFewOfMyFavoriteThings); print out   ["Bright copper kettles", "warm woolen mittens", "Brown paper packages tied up with strings"]
+
+
+5. console.log(numbers) print out [10,30,20]
+
+6. var a = obj.numbers.a;
+var b = obj.numbers.b;
+
+7. const {a,b} = obj.numbers
+
+8. var arr = [1, 2];
+var temp = arr[0];
+arr[0] = arr[1];
+arr[1] = temp;
+
+9. [arr[0], arr[1]] = [arr[1], arr[0]]
+
