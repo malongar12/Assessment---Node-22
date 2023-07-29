@@ -1,0 +1,18 @@
+1. Hyper Text Transfer Protocol is how clients get data or send data to a server.
+
+2. Uniform Resource Locator, address for some internet resource.
+
+3. Domain Name System. system that takes human-readable URLs and converts them into IP addresses.
+
+4. query string allows you to pass key value pairs into the URL, in the format
+
+5.   GET - get some data from the server
+     POST - send some data to the server 
+
+6. An HTTP request is a request from a client to a server which follows the HTTP protocol 
+
+7. An HTTP response is a response from a server to a client which follows the HTTP protocol 
+
+8. Headers provide additional information about the request or the response.
+example: accept cookies.
+
