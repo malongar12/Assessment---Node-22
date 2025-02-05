@@ -1,8 +1,10 @@
 /** Shared config for application; can be req'd many places. */
 
-require('dotenv');
+//require('dotenv');
+require('dotenv').config() // .env file was not being call
 
 const SECRET_KEY = process.env.SECRET_KEY || 'development-secret-key';
+// there wasn't any .env file
 
 const PORT = +process.env.PORT || 3000;
 

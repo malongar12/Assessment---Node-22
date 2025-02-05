@@ -7,7 +7,7 @@ const { SECRET_KEY } = require('../config');
 
 function requireLogin(req, res, next) {
   try {
-    if (req.curr_username) {
+    if (req.username) {  // Now it checks for req.username which is set in authUser
       return next();
     } else {
       return next({ status: 401, message: 'Unauthorized' });
@@ -15,14 +15,12 @@ function requireLogin(req, res, next) {
   } catch (err) {
     return next(err);
   }
-  
 }
 
 /** Authorization Middleware: Requires user is logged in and is staff. */
-
 function requireAdmin(req, res, next) {
   try {
-    if (req.curr_admin) {
+    if (req.admin) {  // Check for req.admin set in authUser
       return next();
     } else {
       return next({ status: 401, message: 'Unauthorized' });
@@ -31,6 +29,7 @@ function requireAdmin(req, res, next) {
     return next(err);
   }
 }
+
 
 /** Authentication Middleware: put user on request
  *
@@ -47,29 +46,35 @@ function requireAdmin(req, res, next) {
 
 function authUser(req, res, next) {
   try {
-    const token = req.headers['authorization'];
-    if (!token) {
+    const header = req.headers['authorization'];
+
+    if (!header) {
       return res.status(401).json({ message: 'No token provided' });
-      
     }
-    else{
+
+    const token = header.split(" ")[1];
+
+    if (token) {
       jwt.verify(token, SECRET_KEY, (err, decoded) => {
         if (err) {
           return res.status(403).json({ message: 'Failed to authenticate token' });
         }
-    
-        req.userNAME = decoded.usename;
+
+       
+        req.username = decoded.username;
+        req.admin = decoded.admin;  
+
         next();
-      })
+      });
     }
   } catch (error) {
-    return next(error)
-    
+    return next(error);
   }
 } // end
+
 
 module.exports = {
   requireLogin,
   requireAdmin,
-  authUser
+  authUser,
 };

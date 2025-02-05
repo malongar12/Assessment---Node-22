@@ -15,7 +15,7 @@ const { authUser, requireLogin, requireAdmin } = require('../middleware/auth');
  *
  */
 
-router.get('/', authUser, requireLogin, async function(req, res, next) {
+router.get('/', authUser,  async function(req, res, next) {
   try {
     let users = await User.getAll();
     return res.json({ users });
@@ -69,13 +69,13 @@ router.patch('/:username', authUser, requireLogin, requireAdmin, async function(
   next
 ) {
   try {
-    if (!req.curr_admin && req.curr_username !== req.params.username) {
+    if (!req.admin && req.username !== req.params.username) {
       throw new ExpressError('Only  that user or admin can edit a user.', 401);
     }
 
-    // get fields to change; remove token so we don't try to change it
+   
     let fields = { ...req.body };
-    delete fields._token;
+    //delete fields._token;
 
     let user = await User.update(req.params.username, fields);
     return res.json({ user });
@@ -100,8 +100,14 @@ router.delete('/:username', authUser, requireAdmin, async function(
   next
 ) {
   try {
-    User.delete(req.params.username);
+   let deleteUser = await  User.delete(req.params.username);
+
+   if (deleteUser.rows[0]) {
     return res.json({ message: 'deleted' });
+   }else{
+    return res.status(404).json({ message: 'User not found' });
+   }
+    
   } catch (err) {
     return next(err);
   }

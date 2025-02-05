@@ -13,6 +13,7 @@ const userRoutes = require('./routes/users');
 app.use('/', authRoutes);
 app.use('/users', userRoutes);
 
+//routing was missing
 /** 404 handler */
 
 app.use(function(req, res, next) {
